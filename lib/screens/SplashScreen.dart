@@ -11,11 +11,11 @@ class SplashScreen extends StatelessWidget {
           context, MaterialPageRoute(builder: (context) => StartScreen()));
     });
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.lightBlue,
       body: SafeArea(
         child: Center(
           child: Image.asset(
-            'assets/splashscreen.jpg',
+            'assets/icvn.png',
             fit: BoxFit.cover,
             alignment: Alignment.center,
           ),

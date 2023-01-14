@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vistech/screens/MenuScreen.dart';
+import 'package:vistech/screens/HomeScreen.dart';
 
 class StartScreen extends StatelessWidget {
   const StartScreen({Key? key}) : super(key: key);
@@ -15,7 +15,7 @@ class StartScreen extends StatelessWidget {
               Container(
                 height: MediaQuery.of(context).size.height * 0.5,
                 decoration: BoxDecoration(
-                  color: Colors.black,
+                  color: Colors.blue,
                 ),
                 child: Center(
                   child: Image.asset(
@@ -54,13 +54,13 @@ class StartScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => MenuScreen(),
+                          builder: (context) => HomeScreen(),
                         ),
                       );
                     },
                     style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all(Colors.green)),
+                            MaterialStateProperty.all(Colors.blueAccent)),
                   ),
                 ),
               )

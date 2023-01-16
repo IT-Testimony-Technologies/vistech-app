@@ -1,0 +1,28 @@
+{
+  "tutors": [
+    {
+      "name": "John Smith",
+      "location": "New York",
+      "active": true,
+      "premium_rate": 50
+    },
+    {
+      "name": "Emily Johnson",
+      "location": "Los Angeles",
+      "active": false,
+      "premium_rate": 60
+    },
+    {
+      "name": "Michael Brown",
+      "location": "Chicago",
+      "active": true,
+      "premium_rate": 40
+    },
+    {
+      "name": "Jessica Davis",
+      "location": "Houston",
+      "active": true,
+      "premium_rate": 55
+    }
+  ]
+}

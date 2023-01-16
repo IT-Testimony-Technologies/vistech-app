@@ -23,7 +23,7 @@ class _SearchScreenState extends State<SearchScreen> {
               borderRadius: BorderRadius.all(Radius.circular(5.0)),
               borderSide: BorderSide(color: Colors.blue, width: 2.0),
             ),
-            hintText: 'Search',
+            hintText: 'Search for a tutor',
             suffixIcon: IconButton(
               icon: Icon(Icons.search),
               onPressed: () {

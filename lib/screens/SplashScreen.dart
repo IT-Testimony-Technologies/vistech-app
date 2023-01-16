@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:vistech/extensions/colorextension.dart';
+import 'package:vistech/screens/HomeScreen.dart';
 import 'package:vistech/screens/StartScreen.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -6,16 +9,24 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration(seconds: 5), () {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => StartScreen()));
+    FirebaseAuth auth = FirebaseAuth.instance;
+    Future.delayed(Duration(seconds: 6), () {
+      FirebaseAuth.instance.authStateChanges().listen((User? user) {
+        if (user == null) {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => StartScreen()));
+        } else {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => HomeScreen()));
+        }
+      });
     });
     return Scaffold(
-      backgroundColor: Colors.lightBlue,
+      backgroundColor: '#0032FF'.toColor(),
       body: SafeArea(
         child: Center(
           child: Image.asset(
-            'assets/icvn.png',
+            'assets/splashscreenicon.PNG',
             fit: BoxFit.cover,
             alignment: Alignment.center,
           ),

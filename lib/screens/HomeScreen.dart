@@ -17,6 +17,10 @@ class _HomeScreenState extends State<HomeScreen> {
     return await FirebaseAuth.instance.currentUser;
   }
 
+  Future<void> _signOut() async {
+    await FirebaseAuth.instance.signOut();
+  }
+
   String? uid, name;
   @override
   void initState() {
@@ -92,6 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: Text('Sign Out'),
                 onTap: () {
                   // handle the press event
+                  _signOut();
                 },
               ),
             ],

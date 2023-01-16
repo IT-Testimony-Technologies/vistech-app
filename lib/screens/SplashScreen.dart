@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:vistech/extensions/colorextension.dart';
 import 'package:vistech/screens/HomeScreen.dart';
 import 'package:vistech/screens/StartScreen.dart';
 
@@ -22,7 +21,7 @@ class SplashScreen extends StatelessWidget {
       });
     });
     return Scaffold(
-      backgroundColor: '#0032FF'.toColor(),
+      backgroundColor: Colors.blueAccent,
       body: SafeArea(
         child: Center(
           child: Image.asset(

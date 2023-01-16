@@ -15,15 +15,20 @@ class CreateAccount extends StatefulWidget {
 }
 
 class _CreateAccountState extends State<CreateAccount> {
+  bool _isLoading = false;
   final FirebaseAuth _auth = FirebaseAuth.instance;
   late String _email;
   late String _password;
 
   Future<void> _signInAccount(String email, String password) async {
+    setState(() {
+      _isLoading = true;
+    });
     try {
       final firebaseUser = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
       print(firebaseUser);
+
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => HomeScreen()));
     } catch (e) {
@@ -38,6 +43,9 @@ class _CreateAccountState extends State<CreateAccount> {
   }
 
   Future<void> _createAccount(String email, String password) async {
+    setState(() {
+      _isLoading = true;
+    });
     try {
       final List<String> signInMethods =
           await FirebaseAuth.instance.fetchSignInMethodsForEmail(email);
@@ -48,6 +56,7 @@ class _CreateAccountState extends State<CreateAccount> {
       final firebaseUser = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
       print(firebaseUser);
+
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => HomeScreen()));
     } catch (e) {
@@ -55,8 +64,10 @@ class _CreateAccountState extends State<CreateAccount> {
     }
   }
 
-  static Future<User?> _signInWithGoogle(
-      {required BuildContext context}) async {
+  Future<User?> _signInWithGoogle({required BuildContext context}) async {
+    setState(() {
+      _isLoading = true;
+    });
     FirebaseAuth auth = FirebaseAuth.instance;
     User? user;
 
@@ -79,6 +90,7 @@ class _CreateAccountState extends State<CreateAccount> {
             await auth.signInWithCredential(credential);
 
         user = userCredential.user;
+
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => HomeScreen()));
       } on FirebaseAuthException catch (e) {
@@ -155,13 +167,26 @@ class _CreateAccountState extends State<CreateAccount> {
                         width: 100,
                       ),
                       GestureDetector(
-                          onTap: () {
-                            _signInWithGoogle(context: context);
-                          },
-                          child: Icon(Icons.mail)),
+                        onTap: () {
+                          _signInWithGoogle(context: context);
+                        },
+                        child: Image.asset('assets/circlegoogleicon.png',
+                            width: 30, height: 30),
+                      ),
                     ],
                   ),
                 ),
+                SizedBox(
+                  height: 10,
+                ),
+                _isLoading
+                    ? Center(
+                        child: Container(
+                            height: 20,
+                            child: CircularProgressIndicator(
+                                color: Colors.blueAccent)),
+                      )
+                    : SizedBox(),
               ],
             ),
           ),

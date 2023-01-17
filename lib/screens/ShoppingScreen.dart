@@ -271,22 +271,27 @@ class _CartScreenState extends State<CartScreen> {
                 // Buy button
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    color: Colors.blueAccent,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        TextButton(
-                          onPressed: () {
-                            //_messages.add(_textController.text);
-                            paypremium();
-                          },
-                          child: Text(
-                            'Buy',
-                            style: TextStyle(color: Colors.white),
+                  child: InkWell(
+                    onTap: () {
+                      paypremium();
+                    },
+                    child: Container(
+                      color: Colors.blueAccent,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              //_messages.add(_textController.text);
+                              paypremium();
+                            },
+                            child: Text(
+                              'Buy',
+                              style: TextStyle(color: Colors.white),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),

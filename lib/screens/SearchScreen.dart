@@ -60,7 +60,7 @@ class _SearchScreenState extends State<SearchScreen> {
     return Scaffold(
         body: Column(children: <Widget>[
       SizedBox(
-        height: 10,
+        height: 90,
       ),
       Padding(
         padding: const EdgeInsets.all(8.0),

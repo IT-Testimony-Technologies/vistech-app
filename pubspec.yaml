@@ -46,6 +46,7 @@ dependencies:
   intl: ^0.17.0
   shrine_images: ^2.0.2
   provider: ^6.0.5
+  google_maps_flutter: ^2.2.3
 
 dev_dependencies:
   flutter_application_id: ^2.0.0-dev

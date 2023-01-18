@@ -83,7 +83,7 @@ class _QuizQuestionType2ScreenState extends State<QuizQuestionType2Screen> {
                       Expanded(
                         child: Column(
                           children: <Widget>[
-                            FxText.titleMedium("Chemistry",
+                            FxText.titleMedium("Dancing",
                                 color: theme.colorScheme.onBackground,
                                 fontWeight: 700),
                             FxText.bodySmall("Question 7/20",
@@ -120,7 +120,7 @@ class _QuizQuestionType2ScreenState extends State<QuizQuestionType2Screen> {
                       children: <Widget>[
                         Container(
                           child: FxText.titleLarge(
-                            "The metallurgical process in which a metal is obtained in a fused state is called?",
+                            "What dance did Luo dance?",
                             letterSpacing: 0.2,
                             wordSpacing: 0.5,
                             color: theme.colorScheme.onBackground,
@@ -134,9 +134,8 @@ class _QuizQuestionType2ScreenState extends State<QuizQuestionType2Screen> {
                             children: <Widget>[
                               questionOption(option: "Smelting", index: 0),
                               questionOption(option: "Roasting", index: 1),
-                              questionOption(option: "Calcinations", index: 2),
-                              questionOption(
-                                  option: "Froth floatation", index: 3),
+                              questionOption(option: "Nreak dance", index: 2),
+                              questionOption(option: "Poor Dancer", index: 3),
                             ],
                           ),
                         ),

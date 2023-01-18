@@ -99,7 +99,7 @@ class _CourseHomeScreenState extends State<CourseHomeScreen> {
           child: Column(
             children: <Widget>[
               singleMyCourse(
-                  title: "How to make tubes and paper crafts",
+                  title: "How to make high notes",
                   image: './assets/images/apps/course/art.jpg',
                   subtitle: "Arts \& Crafts",
                   progress: 0.4,
@@ -107,9 +107,9 @@ class _CourseHomeScreenState extends State<CourseHomeScreen> {
               Container(
                 margin: FxSpacing.top(24),
                 child: singleMyCourse(
-                    title: "Ardunio Robotics with mBot",
+                    title: "Fast piano play",
                     image: './assets/images/apps/course/robot.jpg',
-                    subtitle: "Robotics",
+                    subtitle: "Mental Traininf",
                     progress: 0.6,
                     status: "5 of 8 lessons"),
               ),
@@ -128,19 +128,19 @@ class _CourseHomeScreenState extends State<CourseHomeScreen> {
             runSpacing: 16,
             children: <Widget>[
               singleVideoLecture(
-                  subject: "Physics",
+                  subject: "Piano",
                   title: "Chap 1",
                   image: './assets/images/apps/course/subject-2.jpg'),
               singleVideoLecture(
-                  subject: "Biology",
+                  subject: "Drums",
                   title: "Lab 1",
                   image: './assets/images/apps/course/biology.jpg'),
               singleVideoLecture(
-                  subject: "Physics",
+                  subject: "Flute",
                   title: "Chap 2",
                   image: './assets/images/apps/course/subject-6.jpg'),
               singleVideoLecture(
-                  subject: "Chemistry",
+                  subject: "Vocal",
                   title: "Lab 2",
                   image: './assets/images/apps/course/subject-2.jpg'),
             ],
@@ -228,7 +228,7 @@ class _CourseHomeScreenState extends State<CourseHomeScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
-            child: FxText.titleMedium("Mock Test\n21, July",
+            child: FxText.titleMedium("Test yourself",
                 fontWeight: 700, color: theme.colorScheme.onBackground),
           ),
           Container(

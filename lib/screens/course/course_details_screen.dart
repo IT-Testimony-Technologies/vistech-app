@@ -107,7 +107,7 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen> {
               ),
               Container(
                 margin: FxSpacing.top(16),
-                child: FxText.headlineSmall("UI Designing",
+                child: FxText.headlineSmall("Piano",
                     fontWeight: 700, color: theme.colorScheme.onPrimary),
               ),
               Container(
@@ -199,14 +199,16 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen> {
                           time: "4:15 mins",
                           index: "01"),
                       singleContent(
-                          title: "UI - Intro", time: "8:30 mins", index: "02"),
+                          title: "Piano - Intro",
+                          time: "8:30 mins",
+                          index: "02"),
                       singleContent(
-                          title: "UI - Process",
+                          title: "Piano - Process",
                           time: "14:15 mins",
                           enabled: false,
                           index: "03"),
                       singleContent(
-                          title: "UI - Finishing",
+                          title: "Piano - Finishing",
                           time: "2:45 mins",
                           enabled: false,
                           index: "04"),

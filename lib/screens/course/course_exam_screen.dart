@@ -155,34 +155,30 @@ class _CourseExamScreenState extends State<CourseExamScreen> {
                   children: <Widget>[
                     SingleQuestion(
                       qNumber: 1,
-                      question: "Young's modulus is the property of?",
-                      options: [
-                        "Gas only",
-                        "Both Solid and Liquid",
-                        "Solid only",
-                        "Liquid only"
-                      ],
+                      question: "What is the range of a soprano?",
+                      options: ["C3 to C6", "F3 to F6", "G2 to G5", "A2 to A5"],
                     ),
                     Container(
                       margin: FxSpacing.top(16),
                       child: SingleQuestion(
                         qNumber: 2,
                         question:
-                            "Movement of cell against concentration gradient is called",
-                        options: [
-                          "osmosis",
-                          "active transport",
-                          "diffusion",
-                          "passive transport"
-                        ],
+                            "Which of the following is not a type of chord?",
+                        options: ["Tristich", "Triad", "Dyad", "Tetrad"],
                       ),
                     ),
                     Container(
                       margin: FxSpacing.vertical(16),
                       child: SingleQuestion(
-                        qNumber: 3,
-                        question: "Plants receive their nutrients mainly from",
-                        options: ["chlorophyll", "atmosphere", "light", "soil"],
+                        qNumber: 2,
+                        question:
+                            "What is the most common time signature in 4/4 time?",
+                        options: [
+                          "Common time",
+                          "Cut time",
+                          "Simple time",
+                          "Compound time"
+                        ],
                       ),
                     ),
                   ],

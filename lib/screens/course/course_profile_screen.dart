@@ -49,7 +49,7 @@ class _CourseProfileScreenState extends State<CourseProfileScreen> {
                   children: <Widget>[
                     FxText.bodyLarge("Denise Andrew",
                         color: theme.colorScheme.onBackground, fontWeight: 600),
-                    FxText.bodySmall("Regular profile",
+                    FxText.bodySmall("Level -1 Trainee",
                         color: theme.colorScheme.onBackground,
                         muted: true,
                         fontWeight: 600),
@@ -73,13 +73,13 @@ class _CourseProfileScreenState extends State<CourseProfileScreen> {
           child: Column(
             children: <Widget>[
               progressWidget(
-                  title: "Download - Flutter Lesson 1",
+                  title: "Download - piano Lesson 1",
                   progress: 48,
                   iconData: MdiIcons.play),
               Container(
                 margin: FxSpacing.top(16),
                 child: progressWidget(
-                    title: "Download - Flutter Lesson 2"
+                    title: "Download - piano Lesson 2"
                         "",
                     progress: 64,
                     iconData: MdiIcons.pause),
@@ -87,7 +87,7 @@ class _CourseProfileScreenState extends State<CourseProfileScreen> {
               Container(
                 margin: FxSpacing.top(16),
                 child: progressWidget(
-                    title: "Download - Flutter Lesson 3"
+                    title: "Download - piano Lesson 3"
                         "",
                     progress: 0,
                     iconData: MdiIcons.download),

@@ -82,7 +82,7 @@ class _QuizQuestionType1ScreenState extends State<QuizQuestionType1Screen> {
                       Expanded(
                         child: Column(
                           children: <Widget>[
-                            FxText.titleMedium("Molecular Physics",
+                            FxText.titleMedium("Vocals",
                                 color: theme.colorScheme.onBackground,
                                 fontWeight: 700),
                             FxText.bodySmall("Question 1/20",
@@ -121,7 +121,7 @@ class _QuizQuestionType1ScreenState extends State<QuizQuestionType1Screen> {
                       children: <Widget>[
                         Container(
                           child: FxText.titleLarge(
-                            "If electrical conductivity increases with the increase of temperature of a substance, then it is a?",
+                            "Easiest vocals to balance",
                             letterSpacing: 0.2,
                             wordSpacing: 0.5,
                             color: theme.colorScheme.onBackground,
@@ -133,10 +133,10 @@ class _QuizQuestionType1ScreenState extends State<QuizQuestionType1Screen> {
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
-                              questionOption(option: "Conductor", index: 0),
-                              questionOption(option: "Semiconductor", index: 1),
-                              questionOption(option: "Insulator", index: 2),
-                              questionOption(option: "Carburetor", index: 3),
+                              questionOption(option: "Suprano", index: 0),
+                              questionOption(option: "Bass", index: 1),
+                              questionOption(option: "Ultra", index: 2),
+                              questionOption(option: "basic", index: 3),
                             ],
                           ),
                         ),

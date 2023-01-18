@@ -101,7 +101,7 @@ class _CourseVideoScreenState extends State<CourseVideoScreen>
               size: 24,
             ),
           ),
-          title: FxText.bodyLarge("UI - Intro",
+          title: FxText.bodyLarge("Vocals - Intro",
               color: theme.colorScheme.onBackground, fontWeight: 600),
         ),
         body: Column(
@@ -183,7 +183,7 @@ class _CourseVideoScreenState extends State<CourseVideoScreen>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               FxText.bodyMedium(
-                                  "1.0 Introduction of UI Designing",
+                                  "1.0 Introduction of Vocal balancing",
                                   color: theme.colorScheme.onBackground,
                                   fontWeight: 600),
                               Container(

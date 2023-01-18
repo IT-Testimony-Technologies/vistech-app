@@ -45,7 +45,7 @@ class _CourseTasksScreenState extends State<CourseTasksScreen> {
                 Container(
                   margin: FxSpacing.top(8),
                   child: singleTask(
-                    subject: "Biology",
+                    subject: "Piano",
                     statusText: "Over due",
                     submissionDate: "31/07/20",
                     status: 0,
@@ -53,13 +53,13 @@ class _CourseTasksScreenState extends State<CourseTasksScreen> {
                   ),
                 ),
                 singleTask(
-                    subject: "Mathematics",
+                    subject: "Guitar",
                     task: "Example 2",
                     statusText: "Not submit",
                     status: 1,
                     submissionDate: "22/07/20"),
                 singleTask(
-                    subject: "History",
+                    subject: "Flute",
                     task: "Example 2",
                     statusText: "Not submit",
                     status: 1,
@@ -74,7 +74,7 @@ class _CourseTasksScreenState extends State<CourseTasksScreen> {
                 Container(
                   margin: FxSpacing.top(8),
                   child: singleTask(
-                    subject: "Biology",
+                    subject: "Vocal",
                     statusText: "In Review",
                     status: 2,
                     submissionDate: "29/07/20",
@@ -91,7 +91,7 @@ class _CourseTasksScreenState extends State<CourseTasksScreen> {
                 Container(
                   margin: FxSpacing.top(8),
                   child: singleTask(
-                    subject: "Biology",
+                    subject: "Violin",
                     statusText: "35/40",
                     status: 3,
                     submissionDate: "29/07/20",
@@ -100,7 +100,7 @@ class _CourseTasksScreenState extends State<CourseTasksScreen> {
                 ),
                 singleTask(
                   subject: "History",
-                  task: "Homework 2",
+                  task: "Your last quiz date",
                   statusText: "27/30",
                   status: 3,
                   submissionDate: "24/07/20",

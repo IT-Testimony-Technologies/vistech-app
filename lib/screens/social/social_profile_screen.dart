@@ -6,6 +6,16 @@ import 'package:vistech/theme/app_theme.dart';
 import 'social_profile_detail_screen.dart';
 
 class SocialProfileScreen extends StatefulWidget {
+  const SocialProfileScreen(
+      {Key? key,
+      required this.tutorname,
+      required this.tutorprofileimage,
+      required this.tutorrating})
+      : super(key: key);
+  final String tutorname;
+  final String tutorprofileimage;
+  final int tutorrating;
+
   @override
   _SocialProfileScreenState createState() => _SocialProfileScreenState();
 }
@@ -27,7 +37,7 @@ class _SocialProfileScreenState extends State<SocialProfileScreen> {
         body: Stack(
       children: [
         Image(
-          image: AssetImage('./assets/images/apps/social/profile-p1.jpg'),
+          image: NetworkImage(widget.tutorprofileimage),
           fit: BoxFit.cover,
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
@@ -66,9 +76,9 @@ class _SocialProfileScreenState extends State<SocialProfileScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                FxText.headlineSmall("Zayn Molloy",
+                FxText.headlineSmall(widget.tutorname,
                     color: Colors.white, fontWeight: 700),
-                FxText.bodyMedium("Fashion Model",
+                FxText.bodyMedium("Piano and Guitar Tutor",
                     color: Colors.white, muted: true, fontWeight: 500),
                 Container(
                   margin: FxSpacing.top(24),
@@ -82,7 +92,7 @@ class _SocialProfileScreenState extends State<SocialProfileScreen> {
                                 color: Colors.white, fontWeight: 600),
                             Container(
                               margin: FxSpacing.top(4),
-                              child: FxText.bodyMedium("Posts",
+                              child: FxText.bodyMedium("Courses",
                                   color: Colors.white,
                                   muted: true,
                                   fontWeight: 400),
@@ -96,7 +106,7 @@ class _SocialProfileScreenState extends State<SocialProfileScreen> {
                                 color: Colors.white, fontWeight: 600),
                             Container(
                               margin: FxSpacing.top(4),
-                              child: FxText.bodyMedium("Following",
+                              child: FxText.bodyMedium("Certificates",
                                   color: Colors.white,
                                   muted: true,
                                   fontWeight: 400),
@@ -106,11 +116,11 @@ class _SocialProfileScreenState extends State<SocialProfileScreen> {
                         VerticalDivider(),
                         Column(
                           children: [
-                            FxText.titleMedium("1.2M",
+                            FxText.titleMedium(widget.tutorrating.toString(),
                                 color: Colors.white, fontWeight: 600),
                             Container(
                               margin: FxSpacing.top(4),
-                              child: FxText.bodyMedium("Followers",
+                              child: FxText.bodyMedium("Rating",
                                   color: Colors.white,
                                   muted: true,
                                   fontWeight: 400),
@@ -131,7 +141,7 @@ class _SocialProfileScreenState extends State<SocialProfileScreen> {
                               padding: MaterialStateProperty.all(
                                   FxSpacing.xy(16, 0))),
                           onPressed: () {},
-                          child: FxText.bodyMedium("Follow",
+                          child: FxText.bodyMedium("Subscribe",
                               fontWeight: 600,
                               color: theme.colorScheme.onPrimary),
                         ),
@@ -142,7 +152,12 @@ class _SocialProfileScreenState extends State<SocialProfileScreen> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      SocialProfileDetailScreen()));
+                                      SocialProfileDetailScreen(
+                                        tutorname: widget.tutorname,
+                                        tutorprofileimage:
+                                            widget.tutorprofileimage,
+                                        tutorrating: widget.tutorrating,
+                                      )));
                         },
                         child: Container(
                             margin: FxSpacing.left(16),

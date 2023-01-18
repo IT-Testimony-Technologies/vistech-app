@@ -111,8 +111,8 @@ class _ChatAudioScreenState extends State<ChatAudioScreen> {
             borderRadius: BorderRadius.all(Radius.circular(34)),
             child: Image(
               image: AssetImage(image),
-              height: 68,
-              width: 68,
+              height: 38,
+              width: 38,
               fit: BoxFit.cover,
             ),
           ),
@@ -122,7 +122,7 @@ class _ChatAudioScreenState extends State<ChatAudioScreen> {
               name,
             ),
           ),
-          Container(
+          /*Container(
             margin: FxSpacing.top(8),
             child: Row(
               mainAxisSize: MainAxisSize.min,
@@ -148,6 +148,7 @@ class _ChatAudioScreenState extends State<ChatAudioScreen> {
               ],
             ),
           )
+        */
         ],
       ),
     );
@@ -193,7 +194,7 @@ class _ChatAudioScreenState extends State<ChatAudioScreen> {
             child: Icon(
               MdiIcons.accountPlusOutline,
               color: theme.colorScheme.onBackground,
-              size: 22,
+              size: 12,
             ),
           )
         ],

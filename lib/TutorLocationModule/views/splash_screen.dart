@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
 import 'package:vistech/theme/app_theme.dart';
@@ -29,6 +30,8 @@ class _EstateSplashScreenState extends State<EstateSplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAuth auth = FirebaseAuth.instance;
+
     return MaterialApp(
       theme: theme.copyWith(
           colorScheme: theme.colorScheme
@@ -45,7 +48,7 @@ class _EstateSplashScreenState extends State<EstateSplashScreen> {
                     fit: BoxFit.cover,
                     image: AssetImage("assets/images/apps/estate/estate16.jpg"),
                   ),
-                  Positioned(
+                  /* Positioned(
                     top: 132,
                     left: 0,
                     right: 0,
@@ -55,19 +58,19 @@ class _EstateSplashScreenState extends State<EstateSplashScreen> {
                       textAlign: TextAlign.center,
                       letterSpacing: 0.4,
                     ),
-                  ),
+                  ),*/
                   Positioned(
                     top: 180,
                     left: 0,
                     right: 0,
                     child: FxText.displaySmall(
-                      'Dream Home',
+                      'Wimbo Music App',
                       color: customTheme.estateOnPrimary,
                       textAlign: TextAlign.center,
                       fontWeight: 800,
                     ),
                   ),
-                  Positioned(
+                  /*Positioned(
                     top: 320,
                     child: FxCard(
                       onTap: () {
@@ -90,12 +93,21 @@ class _EstateSplashScreenState extends State<EstateSplashScreen> {
                         ],
                       ),
                     ),
-                  ),
+                  ),*/
                   Positioned(
                     top: 380,
                     child: FxCard(
                       onTap: () {
-                        controller.goToLogin();
+                        //controller.goToLogin();
+                        FirebaseAuth.instance
+                            .authStateChanges()
+                            .listen((User? user) {
+                          if (user == null) {
+                            controller.goToLogin();
+                          } else {
+                            controller.gotToHome();
+                          }
+                        });
                       },
                       paddingAll: 24,
                       color: customTheme.estatePrimary,

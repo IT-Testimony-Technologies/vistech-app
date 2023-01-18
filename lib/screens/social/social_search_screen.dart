@@ -3,8 +3,6 @@ import 'package:flutx/flutx.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:vistech/theme/app_theme.dart';
 
-import 'social_profile_screen.dart';
-
 class SocialSearchScreen extends StatefulWidget {
   @override
   _SocialSearchScreenState createState() => _SocialSearchScreenState();
@@ -170,8 +168,10 @@ class _SocialSearchScreenState extends State<SocialSearchScreen> {
       margin: FxSpacing.top(16),
       child: InkWell(
         onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => SocialProfileScreen()));
+          /*Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SocialProfileScreen()));*/
         },
         child: Row(
           children: <Widget>[
@@ -260,8 +260,10 @@ class _SocialSearchScreenState extends State<SocialSearchScreen> {
     return Container(
       child: InkWell(
         onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => SocialProfileScreen()));
+          /*Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SocialProfileScreen()));*/
         },
         child: Column(
           children: <Widget>[

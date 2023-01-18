@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:vistech/TutorLocationModule/views/profile_screen.dart';
 import 'package:vistech/theme/app_theme.dart';
 import 'package:vistech/widgets/custom/navigation/custom_bottom_navigation.dart';
 
 import 'cart_screen.dart';
 import 'home_screen.dart';
-import 'profile_screen.dart';
 import 'search_screen.dart';
 
 class ShoppingFullApp extends StatefulWidget {
@@ -55,9 +55,7 @@ class _ShoppingFullAppState extends State<ShoppingFullApp> {
                   ShoppingHomeScreen(),
                   ShoppingSearchScreen(),
                   ShoppingCartScreen(),
-                  ShoppingProfileScreen(
-                    root: context,
-                  )
+                  EstateProfileScreen(),
                 ],
               ),
             ),

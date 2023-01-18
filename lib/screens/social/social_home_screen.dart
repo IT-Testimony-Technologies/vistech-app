@@ -5,7 +5,6 @@ import 'package:vistech/theme/app_theme.dart';
 import 'package:vistech/utils/generator.dart';
 
 import 'social_post_screen.dart';
-import 'social_profile_screen.dart';
 import 'social_status_screen.dart';
 
 class SocialHomeScreen extends StatefulWidget {
@@ -245,10 +244,10 @@ class _SocialHomeScreenState extends State<SocialHomeScreen> {
                 children: [
                   InkWell(
                     onTap: () {
-                      Navigator.push(
+                      /*Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => SocialProfileScreen()));
+                              builder: (context) => SocialProfileScreen()));*/
                     },
                     child: Container(
                       child: ClipRRect(

@@ -2,7 +2,12 @@ import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:vistech/screens/TutorScreen.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:flutx/flutx.dart';
+import 'package:vistech/TutorLocationModule/views/search_screen.dart';
+import 'package:vistech/screens/social/social_profile_screen.dart';
+import 'package:vistech/theme/app_theme.dart';
+import 'package:vistech/theme/custom_theme.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
@@ -12,6 +17,8 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
+  late ThemeData theme;
+  late CustomTheme customTheme;
   Color randomColor() {
     var random = new Random();
     var next = random.nextInt(2);
@@ -49,10 +56,45 @@ class _SearchScreenState extends State<SearchScreen> {
     return imageUrls[Random().nextInt(imageUrls.length)];
   }
 
+  @override
+  void initState() {
+    super.initState();
+    theme = AppTheme.theme;
+    customTheme = AppTheme.customTheme;
+  }
+
   late String _searchQuery;
   bool _noResults = false;
   _SearchScreenState() {
     _searchQuery = "";
+  }
+  Widget _buildSingleRow({String? title, IconData? icon}) {
+    return Row(
+      children: [
+        FxContainer(
+          paddingAll: 8,
+          borderRadiusAll: 4,
+          color: theme.colorScheme.onBackground.withAlpha(20),
+          child: Icon(
+            icon,
+            color: customTheme.estatePrimary,
+            size: 20,
+          ),
+        ),
+        FxSpacing.width(16),
+        Expanded(
+          child: FxText.bodySmall(
+            title!,
+            letterSpacing: 0.5,
+          ),
+        ),
+        FxSpacing.width(16),
+        Icon(
+          Icons.keyboard_arrow_right,
+          color: theme.colorScheme.onBackground.withAlpha(160),
+        ),
+      ],
+    );
   }
 
   @override
@@ -60,7 +102,7 @@ class _SearchScreenState extends State<SearchScreen> {
     return Scaffold(
         body: Column(children: <Widget>[
       SizedBox(
-        height: 90,
+        height: 60,
       ),
       Padding(
         padding: const EdgeInsets.all(8.0),
@@ -91,9 +133,24 @@ class _SearchScreenState extends State<SearchScreen> {
         ),
       ),
       SizedBox(
-        height: 20,
+        height: 10,
       ),
       Divider(),
+      SizedBox(
+        height: 5,
+      ),
+      InkWell(
+        child: _buildSingleRow(
+            title: 'Discover on Map', icon: FeatherIcons.mapPin),
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => EstateSearchScreen()));
+        },
+      ),
+      Divider(),
+      SizedBox(
+        height: 0,
+      ),
       Expanded(
         child: _noResults
             ? Center(
@@ -155,10 +212,22 @@ class _SearchScreenState extends State<SearchScreen> {
                                 SizedBox(width: 10),
                                 InkWell(
                                   onTap: () {
-                                    Navigator.push(
+                                    /* Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) => TutorScreen(
+                                                  tutorname: streamSnapshot.data
+                                                      ?.docs[index]['name'],
+                                                  tutorprofileimage:
+                                                      randomImages(),
+                                                  tutorrating:
+                                                      generateRandomRating(),
+                                                )));*/
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                SocialProfileScreen(
                                                   tutorname: streamSnapshot.data
                                                       ?.docs[index]['name'],
                                                   tutorprofileimage:

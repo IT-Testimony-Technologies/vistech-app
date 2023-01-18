@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vistech/ShoppingModule/home_screen.dart';
+import 'package:vistech/TutorLocationModule/views/home_screen.dart';
+import 'package:vistech/screens/SearchScreen.dart';
+import 'package:vistech/screens/course/course_subject_screen.dart';
 import 'package:vistech/theme/app_theme.dart';
 
-import 'chat_screen.dart';
-import 'home_screen.dart';
 import 'profile_screen.dart';
-import 'search_screen.dart';
 
 class EstateFullAppScreen extends StatefulWidget {
   const EstateFullAppScreen({Key? key}) : super(key: key);
@@ -59,16 +60,23 @@ class _EstateFullAppScreenState extends State<EstateFullAppScreen> {
             iconSize: 24,
           ),
           FxBottomNavigationBarItem(
-            page: EstateSearchScreen(),
+            //page: EstateSearchScreen(),
+            page: SearchScreen(),
             activeIconData: Icons.search,
             iconData: Icons.search,
             activeIconSize: 24,
             iconSize: 24,
           ),
           FxBottomNavigationBarItem(
-              page: EstateChatScreen(),
-              activeIconData: Icons.chat,
-              iconData: Icons.chat_outlined,
+              page: CourseSubjectScreen(),
+              activeIconData: Icons.library_books,
+              iconData: Icons.library_books,
+              activeIconSize: 22,
+              iconSize: 24),
+          FxBottomNavigationBarItem(
+              page: ShoppingHomeScreen(),
+              activeIconData: Icons.shop,
+              iconData: Icons.shop,
               activeIconSize: 22,
               iconSize: 24),
           FxBottomNavigationBarItem(

@@ -5,7 +5,6 @@ import '../models/profile.dart';
 import '../views/matched_profile_screen.dart';
 import '../views/profile_screen.dart';
 import '../views/single_chat_screen.dart';
-import '../views/single_profile_screen.dart';
 
 class DatingHomeController extends FxController {
   bool showLoading = true, uiLoading = true;
@@ -78,10 +77,10 @@ class DatingHomeController extends FxController {
   }
 
   void goToSingleProfileScreen(Profile profile) {
-    Navigator.push(
+    /*Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => DatingSingleProfileScreen(profile)));
+            builder: (context) => DatingSingleProfileScreen(profile)));*/
   }
 
   @override

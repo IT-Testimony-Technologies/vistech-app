@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:vistech/screens/course/course_details_screen.dart';
+import 'package:vistech/screens/course/course_exam_screen.dart';
+import 'package:vistech/screens/course/course_profile_screen.dart';
+import 'package:vistech/screens/course/course_tasks_screen.dart';
+import 'package:vistech/screens/course/course_video_screen.dart';
+import 'package:vistech/screens/quiz/quiz_customize_screen.dart';
 import 'package:vistech/theme/app_theme.dart';
 
 class CourseSubjectScreen extends StatefulWidget {
@@ -56,10 +62,10 @@ class _CourseSubjectScreenState extends State<CourseSubjectScreen> {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                FxText.headlineSmall("Biology",
+                                FxText.headlineSmall("AI Study Quide",
                                     fontWeight: 700,
                                     color: theme.colorScheme.onPrimary),
-                                FxText.bodyLarge("DS100",
+                                FxText.bodyLarge("Study with us",
                                     fontWeight: 500,
                                     color: theme.colorScheme.onPrimary),
                               ],
@@ -80,7 +86,7 @@ class _CourseSubjectScreenState extends State<CourseSubjectScreen> {
                       ),
                       Container(
                         margin: FxSpacing.top(24),
-                        child: FxText.bodyLarge("60 / 62 students",
+                        child: FxText.bodyLarge("60 courses",
                             color: theme.colorScheme.onPrimary,
                             fontWeight: 500),
                       )
@@ -110,28 +116,88 @@ class _CourseSubjectScreenState extends State<CourseSubjectScreen> {
                             shrinkWrap: true,
                             childAspectRatio: 1,
                             children: <Widget>[
-                              singleResource(
-                                  title: "All",
-                                  isSelected: true,
-                                  resource: "14 Files"),
-                              singleResource(
-                                  title: "Lectures",
-                                  iconData: MdiIcons.fileVideoOutline,
-                                  resource: "3 Videos"),
-                              singleResource(
-                                  title: "Reading Material",
-                                  isSelected: false,
-                                  iconData: MdiIcons.filePdfOutline,
-                                  resource: "3 PDFs"),
-                              singleResource(
-                                  title: "Assignment",
-                                  isSelected: false,
-                                  iconData: MdiIcons.fileEditOutline,
-                                  resource: "3 Lessons"),
-                              singleResource(
-                                  title: "Tasks",
-                                  isSelected: false,
-                                  resource: "3 Task"),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            CourseProfileScreen()),
+                                  );
+                                },
+                                child: singleResource(
+                                    title: "All",
+                                    isSelected: true,
+                                    resource: "14 Files"),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            CourseVideoScreen()),
+                                  );
+                                },
+                                child: singleResource(
+                                    title: "Lectures",
+                                    iconData: MdiIcons.fileVideoOutline,
+                                    resource: "3 Videos"),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            CourseDetailsScreen()),
+                                  );
+                                },
+                                child: singleResource(
+                                    title: "Reading Material",
+                                    isSelected: false,
+                                    iconData: MdiIcons.filePdfOutline,
+                                    resource: "3 PDFs"),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            CourseTasksScreen()),
+                                  );
+                                },
+                                child: InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              CourseExamScreen()),
+                                    );
+                                  },
+                                  child: singleResource(
+                                      title: "Assignment",
+                                      isSelected: false,
+                                      iconData: MdiIcons.fileEditOutline,
+                                      resource: "3 Lessons"),
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            QuizCustomizeScreen()),
+                                  );
+                                },
+                                child: singleResource(
+                                    title: "Quizes",
+                                    isSelected: false,
+                                    resource: "3 Task"),
+                              ),
                             ],
                           ),
                         )

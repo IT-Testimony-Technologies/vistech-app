@@ -3,9 +3,19 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutx/flutx.dart';
 import 'package:vistech/theme/app_theme.dart';
 
-import 'social_relationship_screen.dart';
+import '../chat/chat_screen.dart';
 
 class SocialProfileDetailScreen extends StatefulWidget {
+  const SocialProfileDetailScreen(
+      {Key? key,
+      required this.tutorname,
+      required this.tutorprofileimage,
+      required this.tutorrating})
+      : super(key: key);
+  final String tutorname;
+  final String tutorprofileimage;
+  final int tutorrating;
+
   @override
   _SocialProfileDetailScreenState createState() =>
       _SocialProfileDetailScreenState();
@@ -94,8 +104,7 @@ class _SocialProfileDetailScreenState extends State<SocialProfileDetailScreen> {
                     child: ClipRRect(
                       borderRadius: BorderRadius.all(Radius.circular(30)),
                       child: Image(
-                        image:
-                            AssetImage('./assets/images/profile/avatar_3.jpg'),
+                        image: NetworkImage(widget.tutorprofileimage),
                         width: 60,
                         height: 60,
                       ),
@@ -107,13 +116,13 @@ class _SocialProfileDetailScreenState extends State<SocialProfileDetailScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          child: FxText.bodyLarge("Jedd Kouma",
+                          child: FxText.bodyLarge(widget.tutorname,
                               color: theme.colorScheme.onBackground,
                               letterSpacing: 0,
                               fontWeight: 600),
                         ),
                         Container(
-                          child: FxText.bodyMedium("April 12th",
+                          child: FxText.bodyMedium("last Seen: April 12th",
                               color: theme.colorScheme.onBackground,
                               letterSpacing: 0,
                               muted: true),
@@ -134,13 +143,23 @@ class _SocialProfileDetailScreenState extends State<SocialProfileDetailScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    SocialRelationshipScreen()));
+                                builder: (context) => ChatScreen()));
                       },
                       elevation: 0,
                       borderRadiusAll: 4,
-                      child: FxText.bodyMedium("Connect",
-                          fontWeight: 500, color: theme.colorScheme.onPrimary),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ChatScreen()));
+                        },
+                        child: Container(
+                          child: FxText.bodyMedium("Chat",
+                              fontWeight: 500,
+                              color: theme.colorScheme.onPrimary),
+                        ),
+                      ),
                     ),
                   ),
                   Container(
@@ -151,7 +170,7 @@ class _SocialProfileDetailScreenState extends State<SocialProfileDetailScreen> {
                         FxText.titleSmall("105k",
                             color: theme.colorScheme.onBackground,
                             fontWeight: 600),
-                        FxText.bodySmall("Followers",
+                        FxText.bodySmall("Students",
                             color: theme.colorScheme.onBackground, muted: true),
                       ],
                     ),
@@ -161,11 +180,11 @@ class _SocialProfileDetailScreenState extends State<SocialProfileDetailScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        FxText.titleSmall("45",
+                        FxText.titleSmall(widget.tutorrating.toString(),
                             color: theme.colorScheme.onBackground,
                             letterSpacing: 0,
                             fontWeight: 600),
-                        FxText.bodySmall("Following",
+                        FxText.bodySmall("Rating",
                             color: theme.colorScheme.onBackground,
                             muted: true,
                             letterSpacing: 0),
@@ -177,7 +196,7 @@ class _SocialProfileDetailScreenState extends State<SocialProfileDetailScreen> {
             ),
             Container(
               margin: FxSpacing.fromLTRB(24, 24, 0, 0),
-              child: FxText.titleMedium("Posts",
+              child: FxText.titleMedium("Course Outline",
                   color: theme.colorScheme.onBackground, fontWeight: 700),
             ),
             Container(

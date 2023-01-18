@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
 import 'package:vistech/loading_effect.dart';
-import 'package:vistech/screens/music/music_genres_screen.dart';
+import 'package:vistech/screens/music/music_playlist_screen.dart';
 import 'package:vistech/theme/app_theme.dart';
 
 import '../controllers/home_controller.dart';
@@ -341,7 +341,7 @@ class _EstateHomeScreenState extends State<EstateHomeScreen> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => MusicGenresScreen()),
+                MaterialPageRoute(builder: (context) => MusicPlayListScreen()),
               );
             },
             child: SingleChildScrollView(

@@ -35,9 +35,9 @@ class _ShoppingHomeScreenState extends State<ShoppingHomeScreen>
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                FxText.titleMedium("Welcome",
+                FxText.titleMedium("Wimbo Music Shop",
                     letterSpacing: 0, fontWeight: 600),
-                InkWell(
+                /* InkWell(
                   onTap: () {
                     Navigator.of(context).push(new MaterialPageRoute<Null>(
                         builder: (BuildContext context) {
@@ -71,7 +71,7 @@ class _ShoppingHomeScreenState extends State<ShoppingHomeScreen>
                       )
                     ],
                   ),
-                )
+                )*/
               ],
             ),
           ),
@@ -97,7 +97,7 @@ class _ShoppingHomeScreenState extends State<ShoppingHomeScreen>
                               letterSpacing: 0.3,
                               fontWeight: 600),
                         ),
-                        FxText.labelMedium("Colorful Sandal",
+                        FxText.labelMedium("Piano 1010",
                             fontWeight: 600, letterSpacing: 0),
                         FxText.bodySmall("\$ 49.99",
                             fontWeight: 600, letterSpacing: 0)
@@ -141,7 +141,7 @@ class _ShoppingHomeScreenState extends State<ShoppingHomeScreen>
                   child: singleItemWidget(
                       image:
                           './assets/images/apps/shopping/product/product-10.jpg',
-                      name: "Pop corn",
+                      name: "12001-BCV",
                       rate: 45.99),
                 ),
                 Container(
@@ -157,7 +157,7 @@ class _ShoppingHomeScreenState extends State<ShoppingHomeScreen>
                   child: singleItemWidget(
                       image:
                           './assets/images/apps/shopping/product/product-5.jpg',
-                      name: "Sweet Gems",
+                      name: "Gem-1010s",
                       rate: 35.99),
                 ),
                 Container(
@@ -165,7 +165,7 @@ class _ShoppingHomeScreenState extends State<ShoppingHomeScreen>
                   child: singleItemWidget(
                       image:
                           './assets/images/apps/shopping/product/product-2.jpg',
-                      name: "Toffees",
+                      name: "Toffees-BNC10",
                       rate: 28.49),
                 ),
                 Container(
@@ -173,7 +173,7 @@ class _ShoppingHomeScreenState extends State<ShoppingHomeScreen>
                   child: singleItemWidget(
                       image:
                           './assets/images/apps/shopping/product/product-3.jpg',
-                      name: "Candies",
+                      name: "1017-Candies",
                       rate: 15.99),
                 ),
               ],

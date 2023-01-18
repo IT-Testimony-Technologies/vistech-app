@@ -164,7 +164,7 @@ class _SinglePosition extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: Image(
-              image: AssetImage(house.image),
+              image: NetworkImage(house.image),
               fit: BoxFit.cover,
               width: 72,
               height: 72,

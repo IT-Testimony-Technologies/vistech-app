@@ -17,51 +17,51 @@ class House {
   static List<House> houseList() {
     List<House> list = [];
     list.add(House(
-        'Duplex Home',
-        'assets/images/apps/estate/estate7.jpg',
-        '1691 DownTown, Boston',
-        '\$22,200',
-        '5 Beds',
-        '2 Baths',
-        '2 Floors',
-        '150 sqft',
-        'DownTown is a very spacious place. It is in the center of the town and all the daily valuables are available in the shops found here... ',
-        Agent.getOne()));
-
-    list.add(House(
         'Bluish Homie',
-        'assets/images/apps/estate/estate4.jpg',
+        'https://userphotos2.teacheron.com/951071-73182.jpg',
         '2715, Bell Street, San Jose',
         '\$1800/month',
-        '3 Beds',
-        '1 Baths',
-        '1 Floors',
-        '120 squ.feet',
-        'San Jose is a very spacious place. It is in the center of the town and all the daily valuables are available in the shops found here... ',
+        '5 stars',
+        'Available',
+        'Online',
+        'Online',
+        'He is a highly experienced music tutor, offering lessons in violin. They are located in the heart of San Jose and provide high-quality and personalized instruction to students of all levels...',
         Agent.getOne()));
 
     list.add(House(
-        'Black Modern House',
-        'assets/images/apps/estate/estate6.jpg',
-        'New York Street, 1260',
-        '\$2000/month',
-        '4 Beds',
-        '2 Baths',
-        '2 Floors',
-        '180 squ.feet',
-        'New York is a very spacious place. It is in the center of the town and all the daily valuables are available in the shops found here... ',
+        'Tyson Fury',
+        'https://5.imimg.com/data5/RY/PI/MY-4279490/home-tuition-singing-classes-semi-classical-in-devli-road-2c-khanpur-500x500.jpg',
+        '2715, Bell Street, San Jose',
+        '\$1800/month',
+        '5 stars',
+        'Available',
+        'Online',
+        'Online',
+        'Tyson Fury is a highly experienced music tutor, offering lessons in flute. They are located in the heart of San Jose and provide high-quality and personalized instruction to students of all levels...',
         Agent.getOne()));
 
     list.add(House(
-        'Central Edmon',
-        'assets/images/apps/estate/estate2.jpg',
-        '118 Street, West Edmonton, Alberta',
-        '\$15,000',
-        '8 Beds',
-        '3 Baths',
-        '3 Floors',
-        '220 squ.feet',
-        'Edmonton is a very spacious place. It is in the center of the town and all the daily valuables are available in the shops found here... ',
+        'Future',
+        'https://i.ytimg.com/vi/KsAdTFwgDmU/maxresdefault.jpg',
+        '2715, Bell Street, San Jose',
+        '\$1800/month',
+        '5 stars',
+        'Available',
+        'Online',
+        'Remote',
+        'Future is a highly experienced music tutor, offering lessons in Drums. They are located in the heart of San Jose and provide high-quality and personalized instruction to students of all levels...',
+        Agent.getOne()));
+
+    list.add(House(
+        'Bluish',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdk6fhdulkF0jxfhZOMG4nX_FooEZzKfJJaf6alocsCaNomgBd5jHFqBN9GGNJChe2S20&usqp=CAU',
+        '2715, Bell Street, San Jose',
+        '\$1800/month',
+        '5 stars',
+        'Available',
+        'Online',
+        'Remote',
+        'Bluish is a highly experienced music tutor, offering lessons in Flute. They are located in the heart of San Jose and provide high-quality and personalized instruction to students of all levels...',
         Agent.getOne()));
 
     return list;
@@ -69,15 +69,15 @@ class House {
 
   static House getOne() {
     return House(
-        'Black Modern House',
-        'assets/images/apps/estate/estate1.jpg',
-        'New York Street, 1260',
-        '\$2000/month',
-        '4 Bedrooms',
-        '2 Bathrooms',
-        '2 Floors',
-        '180 squ.feet',
-        'DownTown is a very spacious place. It is in the center of the town and all the daily valuables are available in the shops found here... ',
+        'Homie',
+        'https://userphotos2.teacheron.com/328850-67583.jpeg',
+        '2715, Bell Street, San Jose',
+        '\$1800/month',
+        '5 stars',
+        'Available',
+        'Online',
+        'Remote',
+        'Homie is a highly experienced music tutor, offering lessons in drums. They are located in the heart of San Jose and provide high-quality and personalized instruction to students of all levels...',
         Agent.getOne());
   }
 }

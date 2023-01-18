@@ -8,12 +8,12 @@ class Category {
 
   static List<Category> categoryList() {
     List<Category> list = [];
-    list.add(Category('Apartment', Icons.apartment_outlined));
-    list.add(Category('Cottage', Icons.cottage_outlined));
-    list.add(Category('Business Hub', Icons.business_outlined));
-    list.add(Category('Beach House', Icons.deck_outlined));
-    list.add(Category('Villa', Icons.villa_outlined));
-    list.add(Category('Foundation', Icons.foundation_outlined));
+    list.add(Category('Piano', Icons.piano_outlined));
+    list.add(Category('Guitar', Icons.play_circle_fill));
+    list.add(Category('Drums', Icons.view_column_outlined));
+    list.add(Category('Violin', Icons.stream_sharp));
+    list.add(Category('Flute', Icons.line_axis_outlined));
+    list.add(Category('Music Theory', Icons.book));
 
     return list;
   }

@@ -51,10 +51,7 @@ class _EstateSingleAgentScreenState extends State<EstateSingleAgentScreen> {
             paddingAll: 0,
             borderRadiusAll: 8,
             clipBehavior: Clip.hardEdge,
-            child: Image(
-              fit: BoxFit.cover,
-              image: AssetImage(house.image),
-            ),
+            child: SizedBox(),
           ),
           FxSpacing.height(8),
           FxText.bodyLarge(
@@ -80,7 +77,17 @@ class _EstateSingleAgentScreenState extends State<EstateSingleAgentScreen> {
     list.add(FxSpacing.width(24));
 
     for (House house in estateSingleAgentController.houses!) {
-      list.add(_buildSingleHouse(house));
+      list.add(Row(
+        children: [
+          SizedBox(
+            width: 10,
+          ),
+          _buildSingleHouse(house),
+          SizedBox(
+            width: 10,
+          ),
+        ],
+      ));
     }
     return list;
   }
@@ -145,7 +152,7 @@ class _EstateSingleAgentScreenState extends State<EstateSingleAgentScreen> {
                 ),
                 FxSpacing.width(64),
                 FxText.bodyLarge(
-                  'Agent Profile',
+                  'Tutor Profile',
                   fontWeight: 700,
                 ),
               ],
@@ -166,12 +173,7 @@ class _EstateSingleAgentScreenState extends State<EstateSingleAgentScreen> {
                         paddingAll: 0,
                         borderRadiusAll: 12,
                         clipBehavior: Clip.hardEdge,
-                        child: Image(
-                          height: 56,
-                          fit: BoxFit.cover,
-                          image: AssetImage(
-                              estateSingleAgentController.agent.image),
-                        ),
+                        child: SizedBox(),
                       ),
                       FxSpacing.width(16),
                       Column(
@@ -226,27 +228,27 @@ class _EstateSingleAgentScreenState extends State<EstateSingleAgentScreen> {
                   FxSpacing.height(8),
                   Row(
                     children: [
-                      FxContainer.rounded(
+                      /*FxContainer.rounded(
                           paddingAll: 4,
                           color: customTheme.estatePrimary.withAlpha(40),
                           child: Icon(
                             Icons.house,
                             color: customTheme.estatePrimary,
                             size: 14,
-                          )),
+                          )),*/
                       FxSpacing.width(12),
-                      FxText.bodySmall(
+                      /*FxText.bodySmall(
                         estateSingleAgentController.agent.properties,
-                      ),
+                      ),*/
                     ],
                   ),
                   FxSpacing.height(16),
-                  FxText.bodySmall(
+                  /*FxText.bodySmall(
                     'About Me',
                     fontWeight: 700,
-                  ),
+                  ),*/
                   FxSpacing.height(8),
-                  RichText(
+                  /*RichText(
                     text: TextSpan(children: <TextSpan>[
                       TextSpan(
                           text: estateSingleAgentController.agent.description,
@@ -262,7 +264,7 @@ class _EstateSingleAgentScreenState extends State<EstateSingleAgentScreen> {
                         ),
                       ),
                     ]),
-                  ),
+                  ),*/
                   FxSpacing.height(16),
                   FxButton.block(
                     padding: FxSpacing.symmetric(horizontal: 24, vertical: 16),
@@ -289,7 +291,7 @@ class _EstateSingleAgentScreenState extends State<EstateSingleAgentScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 FxText.bodyMedium(
-                  'Agent Listings',
+                  'Related tutors',
                   fontWeight: 700,
                 ),
                 FxText.labelSmall(

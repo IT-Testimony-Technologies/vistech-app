@@ -229,6 +229,7 @@ flutter:
     
     ##Learning  (Material Design 3)
     - assets/images/apps/learning/images/
+    - - assets/images/apps/tutors/images/
     - assets/images/apps/learning/icons/
     ##- lib/m3/learning/data/
     

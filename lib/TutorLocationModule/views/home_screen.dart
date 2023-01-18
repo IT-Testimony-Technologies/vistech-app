@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
 import 'package:vistech/loading_effect.dart';
+import 'package:vistech/screens/music/music_genres_screen.dart';
 import 'package:vistech/theme/app_theme.dart';
 
 import '../controllers/home_controller.dart';
@@ -120,7 +121,7 @@ class _EstateHomeScreenState extends State<EstateHomeScreen> {
       child: Column(
         children: [
           Image(
-            image: AssetImage(house.image),
+            image: NetworkImage(house.image),
             fit: BoxFit.fitWidth,
           ),
           FxContainer(
@@ -165,7 +166,7 @@ class _EstateHomeScreenState extends State<EstateHomeScreen> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Icon(
-                            Icons.king_bed,
+                            Icons.star,
                             size: 16,
                             color:
                                 theme.colorScheme.onBackground.withAlpha(180),
@@ -183,7 +184,7 @@ class _EstateHomeScreenState extends State<EstateHomeScreen> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Icon(
-                            Icons.bathtub,
+                            Icons.wifi,
                             size: 16,
                             color:
                                 theme.colorScheme.onBackground.withAlpha(180),
@@ -207,7 +208,7 @@ class _EstateHomeScreenState extends State<EstateHomeScreen> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Icon(
-                            Icons.square_foot,
+                            Icons.circle,
                             size: 16,
                             color:
                                 theme.colorScheme.onBackground.withAlpha(180),
@@ -220,7 +221,7 @@ class _EstateHomeScreenState extends State<EstateHomeScreen> {
                         ],
                       ),
                     ),
-                    Expanded(
+                    /*Expanded(
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -237,7 +238,7 @@ class _EstateHomeScreenState extends State<EstateHomeScreen> {
                           ),
                         ],
                       ),
-                    ),
+                    ),*/
                   ],
                 ),
               ],
@@ -297,21 +298,21 @@ class _EstateHomeScreenState extends State<EstateHomeScreen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    FxText.bodySmall(
+                    /*FxText.bodySmall(
                       'Location',
                       xMuted: true,
-                    ),
+                    ),*/
                     FxSpacing.height(2),
                     Row(
                       children: [
                         Icon(
-                          Icons.location_on,
+                          Icons.language,
                           color: customTheme.estatePrimary,
                           size: 14,
                         ),
                         FxSpacing.width(4),
                         FxText.bodyMedium(
-                          'San Jose, CA',
+                          'Wimbo, ENG',
                           fontWeight: 600,
                         ),
                         Icon(
@@ -327,19 +328,27 @@ class _EstateHomeScreenState extends State<EstateHomeScreen> {
                     _selectSizeSheet(context);
                   },
                   paddingAll: 6,
-                  child: Icon(
+                  /*child: Icon(
                     Icons.more_horiz_outlined,
                     color: theme.colorScheme.onBackground,
-                  ),
+                  ),*/
                 ),
               ],
             ),
           ),
           FxSpacing.height(24),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: _buildCategoryList(),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MusicGenresScreen()),
+              );
+            },
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: _buildCategoryList(),
+              ),
             ),
           ),
           FxSpacing.height(24),

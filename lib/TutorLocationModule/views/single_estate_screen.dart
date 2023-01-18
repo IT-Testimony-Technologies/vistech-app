@@ -117,8 +117,8 @@ class _EstateSingleEstateScreenState extends State<EstateSingleEstateScreen> {
                     clipBehavior: Clip.hardEdge,
                     child: Image(
                       fit: BoxFit.cover,
-                      image:
-                          AssetImage(estateSingleEstateController.house.image),
+                      image: NetworkImage(
+                          estateSingleEstateController.house.image),
                     ),
                   ),
                   FxSpacing.height(16),
@@ -138,12 +138,7 @@ class _EstateSingleEstateScreenState extends State<EstateSingleEstateScreen> {
                           paddingAll: 0,
                           borderRadiusAll: 8,
                           clipBehavior: Clip.hardEdge,
-                          child: Image(
-                            height: 52,
-                            fit: BoxFit.cover,
-                            image: AssetImage(
-                                estateSingleEstateController.house.agent.image),
-                          ),
+                          child: SizedBox(),
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -212,7 +207,7 @@ class _EstateSingleEstateScreenState extends State<EstateSingleEstateScreen> {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Icon(
-                                    Icons.king_bed,
+                                    Icons.stars,
                                     size: 16,
                                     color: FxAppTheme
                                         .theme.colorScheme.onBackground
@@ -231,7 +226,7 @@ class _EstateSingleEstateScreenState extends State<EstateSingleEstateScreen> {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Icon(
-                                    Icons.bathtub,
+                                    Icons.signal_wifi_statusbar_4_bar,
                                     size: 16,
                                     color: FxAppTheme
                                         .theme.colorScheme.onBackground
@@ -256,7 +251,7 @@ class _EstateSingleEstateScreenState extends State<EstateSingleEstateScreen> {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Icon(
-                                    Icons.square_foot,
+                                    Icons.account_circle,
                                     size: 16,
                                     color: FxAppTheme
                                         .theme.colorScheme.onBackground
@@ -270,7 +265,7 @@ class _EstateSingleEstateScreenState extends State<EstateSingleEstateScreen> {
                                 ],
                               ),
                             ),
-                            Expanded(
+                            /* Expanded(
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
@@ -289,7 +284,7 @@ class _EstateSingleEstateScreenState extends State<EstateSingleEstateScreen> {
                                   ),
                                 ],
                               ),
-                            ),
+                            ),*/
                           ],
                         ),
                         FxSpacing.height(20),
@@ -326,7 +321,7 @@ class _EstateSingleEstateScreenState extends State<EstateSingleEstateScreen> {
             FxButton.block(
               onPressed: () {},
               child: FxText.bodyMedium(
-                'Rent Now',
+                'Book a session',
                 color: customTheme.estateOnPrimary,
                 fontWeight: 700,
               ),

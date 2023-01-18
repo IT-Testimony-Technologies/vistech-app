@@ -1,37 +1,89 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
-import 'package:vistech/screens/SplashScreen.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:nb_utils/nb_utils.dart';
+import 'package:vistech/main/screens/AppSplashScreen.dart';
+import 'package:vistech/main/store/AppStore.dart';
+import 'package:vistech/main/utils/AppColors.dart';
+import 'package:vistech/main/utils/AppConstants.dart';
 
-import 'firebase_options.dart';
-
-Future<void> main() async {
+AppStore appStore = AppStore();
+FirebaseAuth auth = FirebaseAuth.instance;
+RemoteConfig? remoteConfig;
+int mAdShowCount = 0;
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(const MyApp());
+
+  if (isMobile) {
+    await Firebase.initializeApp().then((value) {
+      MobileAds.instance.initialize();
+    });
+    // OneSignal.shared.setAppId(OneSignalId);
+  }
+
+  setOrientationPortrait();
+
+  await initialize();
+  appStore.toggleDarkMode(value: getBoolAsync(DarkModePref));
+  appStore.setLoggedIn(getBoolAsync(IsLoggedInSocialLogin));
+
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Vistech',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+    return Observer(
+      builder: (_) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primaryColor: Colors.white,
+          brightness: Brightness.light,
+          fontFamily: GoogleFonts.poppins().fontFamily,
+          accentColor: appPrimaryColor,
+          indicatorColor: appPrimaryColor,
+          scaffoldBackgroundColor: Colors.white,
+          iconTheme: IconThemeData(color: scaffoldSecondaryDark),
+          dialogBackgroundColor: Colors.white,
+          dialogTheme: DialogTheme(backgroundColor: Colors.white),
+          floatingActionButtonTheme:
+              FloatingActionButtonThemeData(backgroundColor: Colors.white),
+        ).copyWith(
+          pageTransitionsTheme: const PageTransitionsTheme(
+            builders: <TargetPlatform, PageTransitionsBuilder>{
+              TargetPlatform.android: OpenUpwardsPageTransitionsBuilder(),
+              TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+            },
+          ),
+        ),
+        darkTheme: ThemeData(
+          primaryColor: Colors.white,
+          brightness: Brightness.dark,
+          fontFamily: GoogleFonts.poppins().fontFamily,
+          accentColor: appPrimaryColor,
+          indicatorColor: appPrimaryColor,
+          scaffoldBackgroundColor: scaffoldColorDark,
+          iconTheme: IconThemeData(color: Colors.white),
+          dialogBackgroundColor: scaffoldColorDark,
+          dialogTheme: DialogTheme(backgroundColor: scaffoldColorDark),
+          floatingActionButtonTheme: FloatingActionButtonThemeData(
+              backgroundColor: scaffoldSecondaryDark),
+        ).copyWith(
+          pageTransitionsTheme: const PageTransitionsTheme(
+            builders: <TargetPlatform, PageTransitionsBuilder>{
+              TargetPlatform.android: OpenUpwardsPageTransitionsBuilder(),
+              TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+            },
+          ),
+        ),
+        themeMode: appStore.isDarkModeOn ? ThemeMode.dark : ThemeMode.light,
+        home: AppSplashScreen(),
+        builder: scrollBehaviour(),
       ),
-      home: const SplashScreen(),
     );
   }
 }

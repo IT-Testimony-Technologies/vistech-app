@@ -20,28 +20,72 @@ class _CourseScreenState extends State<CourseScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Hero(
-            tag: "courseImage",
-            child: Image.asset(
-              'assets/splashscreen.jpg',
-              fit: BoxFit.cover,
-            ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Divider(),
+              SizedBox(
+                height: 30,
+              ),
+              Row(
+                children: <Widget>[
+                  SizedBox(
+                    width: 40,
+                  ),
+                  Container(
+                    height: 300,
+                    width: 300,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage(
+                            'https://pbs.twimg.com/media/Fmq-dHFWIAADEsZ?format=jpg&name=medium'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 20,
+                  ),
+                  // icon: Icon(Icons.play_arrow),
+                  Container(
+                    color: Colors.blue,
+                    width: 200,
+                    child: Row(
+                      children: <Widget>[
+                        IconButton(
+                          icon: Icon(Icons.play_arrow),
+                          onPressed: () {
+                            // Play the course
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      Text('Expert'),
+                      Text('Beginner'),
+                      Text('Intermediate'),
+                    ],
+                  ),
+                ],
+              ),
+            ],
           ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: courseContents.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(courseContents[index]),
-                );
-              },
-            ),
-          ),
-        ],
+        ),
       ),
     );
-    ;
   }
 }

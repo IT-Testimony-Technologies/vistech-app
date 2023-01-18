@@ -1,89 +1,60 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:nb_utils/nb_utils.dart';
-import 'package:vistech/main/screens/AppSplashScreen.dart';
-import 'package:vistech/main/store/AppStore.dart';
-import 'package:vistech/main/utils/AppColors.dart';
-import 'package:vistech/main/utils/AppConstants.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutx/themes/app_theme_notifier.dart';
+import 'package:provider/provider.dart';
+import 'package:vistech/TutorLocationModule/views/splash_screen.dart';
+import 'package:vistech/localizations/app_localization_delegate.dart';
+import 'package:vistech/localizations/language.dart';
+import 'package:vistech/theme/app_notifier.dart';
+import 'package:vistech/theme/app_theme.dart';
 
-AppStore appStore = AppStore();
-FirebaseAuth auth = FirebaseAuth.instance;
-RemoteConfig? remoteConfig;
-int mAdShowCount = 0;
-void main() async {
+import 'firebase_options.dart';
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  if (isMobile) {
-    await Firebase.initializeApp().then((value) {
-      MobileAds.instance.initialize();
-    });
-    // OneSignal.shared.setAppId(OneSignalId);
-  }
-
-  setOrientationPortrait();
-
-  await initialize();
-  appStore.toggleDarkMode(value: getBoolAsync(DarkModePref));
-  appStore.setLoggedIn(getBoolAsync(IsLoggedInSocialLogin));
-
-  runApp(MyApp());
+  AppTheme.init();
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  //runApp(const MyApp());
+  runApp(ChangeNotifierProvider<AppNotifier>(
+    create: (context) => AppNotifier(),
+    child: ChangeNotifierProvider<FxAppThemeNotifier>(
+      create: (context) => FxAppThemeNotifier(),
+      child: MyApp(),
+    ),
+  ));
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return Observer(
-      builder: (_) => MaterialApp(
+    return Consumer<AppNotifier>(
+        builder: (BuildContext context, AppNotifier value, Widget? child) {
+      return MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primaryColor: Colors.white,
-          brightness: Brightness.light,
-          fontFamily: GoogleFonts.poppins().fontFamily,
-          accentColor: appPrimaryColor,
-          indicatorColor: appPrimaryColor,
-          scaffoldBackgroundColor: Colors.white,
-          iconTheme: IconThemeData(color: scaffoldSecondaryDark),
-          dialogBackgroundColor: Colors.white,
-          dialogTheme: DialogTheme(backgroundColor: Colors.white),
-          floatingActionButtonTheme:
-              FloatingActionButtonThemeData(backgroundColor: Colors.white),
-        ).copyWith(
-          pageTransitionsTheme: const PageTransitionsTheme(
-            builders: <TargetPlatform, PageTransitionsBuilder>{
-              TargetPlatform.android: OpenUpwardsPageTransitionsBuilder(),
-              TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
-            },
-          ),
-        ),
-        darkTheme: ThemeData(
-          primaryColor: Colors.white,
-          brightness: Brightness.dark,
-          fontFamily: GoogleFonts.poppins().fontFamily,
-          accentColor: appPrimaryColor,
-          indicatorColor: appPrimaryColor,
-          scaffoldBackgroundColor: scaffoldColorDark,
-          iconTheme: IconThemeData(color: Colors.white),
-          dialogBackgroundColor: scaffoldColorDark,
-          dialogTheme: DialogTheme(backgroundColor: scaffoldColorDark),
-          floatingActionButtonTheme: FloatingActionButtonThemeData(
-              backgroundColor: scaffoldSecondaryDark),
-        ).copyWith(
-          pageTransitionsTheme: const PageTransitionsTheme(
-            builders: <TargetPlatform, PageTransitionsBuilder>{
-              TargetPlatform.android: OpenUpwardsPageTransitionsBuilder(),
-              TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
-            },
-          ),
-        ),
-        themeMode: appStore.isDarkModeOn ? ThemeMode.dark : ThemeMode.light,
-        home: AppSplashScreen(),
-        builder: scrollBehaviour(),
-      ),
-    );
+        title: 'Vistech',
+        theme: AppTheme.theme,
+        builder: (context, child) {
+          return Directionality(
+            textDirection: AppTheme.textDirection,
+            child: child!,
+          );
+        },
+        localizationsDelegates: [
+          AppLocalizationsDelegate(context),
+          // Add this line
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: Language.getLocales(),
+        home: EstateSplashScreen(),
+      );
+    });
   }
 }

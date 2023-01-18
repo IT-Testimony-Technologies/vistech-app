@@ -26,7 +26,7 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion 33// flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -47,8 +47,8 @@ android {
         applicationId "com.vistech.wimbo"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
-        minSdkVersion 19
-        targetSdkVersion 31
+        minSdkVersion 20
+        targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true
@@ -76,4 +76,5 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.1'
     implementation 'com.google.guava:guava:29.0-jre'
     implementation "androidx.browser:browser:1.3.0"
+    //implementation 'com.google.android.gms:play-services-ads:21.4.0'
 }

@@ -1,40 +1,40 @@
 {
   "project_info": {
-    "project_number": "1096902431580",
-    "project_id": "jfjewel-7cd8f",
-    "storage_bucket": "jfjewel-7cd8f.appspot.com"
+    "project_number": "655617181482",
+    "project_id": "forexsomo",
+    "storage_bucket": "forexsomo.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1096902431580:android:503c7938f24a31b988a799",
+        "mobilesdk_app_id": "1:655617181482:android:14aff959f4daaef30b4053",
         "android_client_info": {
-          "package_name": "com.vistech.wimbo"
+          "package_name": "com.ekaleerwe.forexsomo"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1096902431580-2i3astsga4qleg2it7i2p0k241upa9dt.apps.googleusercontent.com",
+          "client_id": "655617181482-b1j6rc37d1l8k0q33pk7p7dqrphlevu2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCaw4VRNlwGwj2su-Zv9J-YSb0d9FIfZPU"
+          "current_key": "AIzaSyASwUQBJ3WDa_jjmVAeChe6OlxetQI0cqk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1096902431580-2i3astsga4qleg2it7i2p0k241upa9dt.apps.googleusercontent.com",
+              "client_id": "655617181482-b1j6rc37d1l8k0q33pk7p7dqrphlevu2.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "1096902431580-4p01t5c44rmaftceiakbu11tfl8qq0b6.apps.googleusercontent.com",
+              "client_id": "655617181482-c10chobs52jrnouq2ittaigjeba5niov.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.vistech.wimbo"
+                "bundle_id": "com.ekaleerwe.forexsomo"
               }
             }
           ]

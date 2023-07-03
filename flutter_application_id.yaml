@@ -1,7 +1,7 @@
 flutter_application_id:
   android:
-    id: "com.vistech.wimbo"
-    name: "Wimbo"
+    id: "com.ekaleerwe.forexsomo"
+    name: "ForexSomo"
   ios:
-    id: "com.vistech.wimbo"
-    name: "Wimbo"
+    id: "com.ekaleerwe.forexsomo"
+    name: "ForexSomo"

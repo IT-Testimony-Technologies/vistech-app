@@ -1,13 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:vistech/screens/course/course_details_screen.dart';
 import 'package:vistech/theme/app_theme.dart';
 import 'package:vistech/utils/generator.dart';
 
 import 'course_exam_time_screen.dart';
-import 'course_notification_screen.dart';
 import 'course_subject_screen.dart';
-import 'course_video_screen.dart';
 
 class CourseHomeScreen extends StatefulWidget {
   @override
@@ -17,6 +17,7 @@ class CourseHomeScreen extends StatefulWidget {
 class _CourseHomeScreenState extends State<CourseHomeScreen> {
   late CustomTheme customTheme;
   late ThemeData theme;
+  bool _noResults = false;
 
   @override
   void initState() {
@@ -28,134 +29,89 @@ class _CourseHomeScreenState extends State<CourseHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: ListView(
-      shrinkWrap: true,
-      padding: FxSpacing.top(FxSpacing.safeAreaTop(context) + 20),
-      children: <Widget>[
-        Container(
-          margin: FxSpacing.fromLTRB(24, 0, 24, 0),
-          child: Row(
-            children: <Widget>[
-              Expanded(
-                child: Container(
-                  child: FxText.bodyLarge("Hello, Learner",
+      body: SafeArea(
+        child: Dismissible(
+          direction: DismissDirection.vertical,
+          key: const Key('key'),
+          onDismissed: (_) => Navigator.of(context).pop(),
+          child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  margin: FxSpacing.fromLTRB(24, 24, 24, 0),
+                  child: FxText.bodyLarge("Learn",
                       color: theme.colorScheme.onBackground, fontWeight: 600),
                 ),
-              ),
-              Container(
-                  child: InkWell(
-                onTap: () {
-                  Navigator.of(context).push(new MaterialPageRoute<Null>(
-                      builder: (BuildContext context) {
-                        return CourseNotificationScreen();
-                      },
-                      fullscreenDialog: true));
-                },
-                child: Stack(
-                  clipBehavior: Clip.none,
-                  children: <Widget>[
-                    Icon(
-                      MdiIcons.bellOutline,
-                      color: theme.colorScheme.onBackground.withAlpha(200),
-                    ),
-                    Positioned(
-                      right: -2,
-                      top: -2,
-                      child: Container(
-                        padding: EdgeInsets.all(0),
-                        height: 14,
-                        width: 14,
-                        decoration: BoxDecoration(
-                            color: theme.colorScheme.primary,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(40))),
-                        child: Center(
-                          child: FxText.labelSmall(
-                            "2",
-                            color: theme.colorScheme.onPrimary,
-                            fontSize: 9,
-                            fontWeight: 500,
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
+                SizedBox(
+                  height: 5,
                 ),
-              ))
-            ],
+                Container(
+                  margin: FxSpacing.fromLTRB(24, 16, 24, 16),
+                  child: Wrap(
+                    spacing: 16,
+                    runSpacing: 16,
+                    children: <Widget>[
+                      StreamBuilder<QuerySnapshot>(
+                        stream: FirebaseFirestore.instance
+                            .collection("topics")
+                            .snapshots(),
+                        builder: (context,
+                            AsyncSnapshot<QuerySnapshot> streamSnapshot) {
+                          if (!streamSnapshot.hasData) {
+                            return Center(
+                              child: Container(
+                                height: 20,
+                                child: CircularProgressIndicator(
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            );
+                          }
+                          final results = streamSnapshot.data?.docs;
+
+                          return GridView.builder(
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              crossAxisSpacing: 10.0,
+                              mainAxisSpacing: 10,
+                            ),
+                            physics: ScrollPhysics(),
+                            scrollDirection: Axis.vertical,
+                            shrinkWrap: true,
+                            itemCount: results?.length,
+                            itemBuilder: (context, index) => singleVideoLecture(
+                                subject:
+                                    "${streamSnapshot.data?.docs[index]['topic name']}",
+                                topic_id: streamSnapshot.data?.docs[index]
+                                    ['topic id'],
+                                image:
+                                    './assets/images/apps/course/purple-topicwp.png'),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
-        Container(
-          margin: FxSpacing.fromLTRB(24, 16, 24, 0),
-          child: examWidget(),
-        ),
-        Container(
-          margin: FxSpacing.fromLTRB(24, 24, 0, 0),
-          child: FxText.titleMedium("My Course",
-              color: theme.colorScheme.onBackground, fontWeight: 600),
-        ),
-        Container(
-          margin: FxSpacing.fromLTRB(24, 16, 24, 0),
-          child: Column(
-            children: <Widget>[
-              singleMyCourse(
-                  title: "How to make high notes",
-                  image: './assets/images/apps/course/art.jpg',
-                  subtitle: "Arts \& Crafts",
-                  progress: 0.4,
-                  status: "3 of 9 lessons"),
-              Container(
-                margin: FxSpacing.top(24),
-                child: singleMyCourse(
-                    title: "Fast piano play",
-                    image: './assets/images/apps/course/robot.jpg',
-                    subtitle: "Mental Traininf",
-                    progress: 0.6,
-                    status: "5 of 8 lessons"),
-              ),
-            ],
-          ),
-        ),
-        Container(
-          margin: FxSpacing.fromLTRB(24, 24, 24, 0),
-          child: FxText.bodyLarge("Up Next",
-              color: theme.colorScheme.onBackground, fontWeight: 600),
-        ),
-        Container(
-          margin: FxSpacing.fromLTRB(24, 16, 24, 16),
-          child: Wrap(
-            spacing: 16,
-            runSpacing: 16,
-            children: <Widget>[
-              singleVideoLecture(
-                  subject: "Piano",
-                  title: "Chap 1",
-                  image: './assets/images/apps/course/subject-2.jpg'),
-              singleVideoLecture(
-                  subject: "Drums",
-                  title: "Lab 1",
-                  image: './assets/images/apps/course/biology.jpg'),
-              singleVideoLecture(
-                  subject: "Flute",
-                  title: "Chap 2",
-                  image: './assets/images/apps/course/subject-6.jpg'),
-              singleVideoLecture(
-                  subject: "Vocal",
-                  title: "Lab 2",
-                  image: './assets/images/apps/course/subject-2.jpg'),
-            ],
-          ),
-        )
-      ],
-    ));
+      ),
+    );
   }
 
   Widget singleVideoLecture(
-      {required String subject, required String title, required String image}) {
+      {required String subject, required int topic_id, required String image}) {
     return InkWell(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => CourseVideoScreen()));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => CourseDetailsScreen(topic_id: topic_id)));
       },
       child: Container(
         child: Stack(
@@ -180,8 +136,8 @@ class _CourseHomeScreenState extends State<CourseHomeScreen> {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Container(
-                    child: FxText.bodyMedium(subject,
-                        color: Colors.white, fontWeight: 600),
+                    child: FxText(subject,
+                        color: Colors.white, fontWeight: 800, fontSize: 14),
                   ),
                   Container(
                     margin: FxSpacing.only(top: 2),
@@ -200,7 +156,7 @@ class _CourseHomeScreenState extends State<CourseHomeScreen> {
                         ),
                         Container(
                           margin: FxSpacing.only(left: 8),
-                          child: FxText.bodyLarge(title,
+                          child: FxText.bodyLarge(topic_id.toString(),
                               color: theme.colorScheme.background,
                               fontWeight: 600),
                         ),

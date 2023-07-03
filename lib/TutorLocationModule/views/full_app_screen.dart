@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vistech/ShoppingModule/home_screen.dart';
-import 'package:vistech/TutorLocationModule/views/home_screen.dart';
-import 'package:vistech/screens/SearchScreen.dart';
+import 'package:vistech/TutorLocationModule/views/search_screen.dart';
+import 'package:vistech/screens/course/course_home_screen.dart';
 import 'package:vistech/screens/course/course_subject_screen.dart';
 import 'package:vistech/theme/app_theme.dart';
 
@@ -53,15 +53,15 @@ class _EstateFullAppScreenState extends State<EstateFullAppScreen> {
         iconColor: theme.colorScheme.onBackground.withAlpha(140),
         itemList: [
           FxBottomNavigationBarItem(
-            page: EstateHomeScreen(),
-            activeIconData: Icons.other_houses,
-            iconData: Icons.other_houses_outlined,
+            page: CourseHomeScreen(),
+            activeIconData: Icons.school,
+            iconData: Icons.school_outlined,
             activeIconSize: 24,
             iconSize: 24,
           ),
           FxBottomNavigationBarItem(
             //page: EstateSearchScreen(),
-            page: SearchScreen(),
+            page: EstateSearchScreen(),
             activeIconData: Icons.search,
             iconData: Icons.search,
             activeIconSize: 24,

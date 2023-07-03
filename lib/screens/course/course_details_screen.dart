@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -5,6 +6,9 @@ import 'package:vistech/theme/app_theme.dart';
 import 'package:vistech/utils/generator.dart';
 
 class CourseDetailsScreen extends StatefulWidget {
+  int topic_id;
+
+  CourseDetailsScreen({required this.topic_id});
   @override
   _CourseDetailsScreenState createState() => _CourseDetailsScreenState();
 }
@@ -28,235 +32,121 @@ class _CourseDetailsScreenState extends State<CourseDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
+        body: Container(
+            child: Wrap(
+      spacing: 16,
+      runSpacing: 16,
       children: <Widget>[
-        Container(
-          decoration: BoxDecoration(
-              color: theme.colorScheme.primary,
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(16),
-                  bottomRight: Radius.circular(16))),
-          padding: FxSpacing.fromLTRB(36, 48, 36, 24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                child: InkWell(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Icon(
-                    MdiIcons.chevronLeft,
-                    color: theme.colorScheme.onPrimary,
-                    size: 24,
-                  ),
-                ),
-              ),
-              Container(
-                margin: FxSpacing.top(16),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        StreamBuilder<QuerySnapshot>(
+          stream: FirebaseFirestore.instance
+              .collection("titles")
+              .where("topic id", isEqualTo: widget.topic_id)
+              .snapshots(),
+          builder: (context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {
+            print(widget.topic_id);
+            if (!streamSnapshot.hasData) {
+              return Center(
+                child: Column(
                   children: <Widget>[
-                    Container(
-                      padding: FxSpacing.symmetric(vertical: 4, horizontal: 8),
-                      decoration: BoxDecoration(
-                          color: customTheme.colorInfo,
-                          borderRadius: BorderRadius.all(Radius.circular(4))),
-                      child: FxText.bodySmall("Trending",
-                          color: customTheme.onInfo,
-                          letterSpacing: 0,
-                          fontWeight: 500),
+                    SizedBox(
+                      height: 150,
                     ),
-                    Row(
+                    Container(
+                      height: 50,
+                      child: CircularProgressIndicator(
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            } else if (streamSnapshot.data!.docs.isEmpty) {
+              // No data found
+              return Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 300,
+                  ),
+                  Center(
+                    child: Text(
+                      'No data found',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            } else {
+              final results = streamSnapshot.data!.docs;
+              results.forEach((doc) {
+                final topicId = doc['topic id'];
+                print('Topic ID: $topicId');
+              });
+              print(results);
+              return Column(
+                children: <Widget>[
+                  Container(
+                    decoration: BoxDecoration(
+                      color: theme.colorScheme.primary,
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(16),
+                        bottomRight: Radius.circular(16),
+                      ),
+                    ),
+                    padding: FxSpacing.fromLTRB(36, 48, 36, 24),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Container(
                           child: InkWell(
                             onTap: () {
-                              setState(() {
-                                isFav = isFav;
-                              });
+                              Navigator.pop(context);
                             },
                             child: Icon(
-                              isFav ? MdiIcons.heart : MdiIcons.heartOutline,
+                              MdiIcons.chevronLeft,
                               color: theme.colorScheme.onPrimary,
-                              size: 22,
+                              size: 24,
                             ),
                           ),
                         ),
                         Container(
-                          margin: FxSpacing.left(24),
-                          child: InkWell(
-                            onTap: () {
-                              setState(() {
-                                isBookmark = isBookmark;
-                              });
-                            },
-                            child: Icon(
-                              isBookmark
-                                  ? MdiIcons.bookmark
-                                  : MdiIcons.bookmarkOutline,
-                              color: theme.colorScheme.onPrimary,
-                              size: 22,
-                            ),
+                          margin: FxSpacing.top(16),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Container(
+                                padding: FxSpacing.symmetric(
+                                  vertical: 4,
+                                  horizontal: 8,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: customTheme.colorInfo,
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(4),
+                                  ),
+                                ),
+                                child: FxText.bodySmall(
+                                  "Trending",
+                                  color: customTheme.onInfo,
+                                  letterSpacing: 0,
+                                  fontWeight: 500,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                margin: FxSpacing.top(16),
-                child: FxText.headlineSmall("Piano",
-                    fontWeight: 700, color: theme.colorScheme.onPrimary),
-              ),
-              Container(
-                margin: FxSpacing.top(8),
-                child: Row(
-                  children: <Widget>[
-                    Icon(
-                      MdiIcons.star,
-                      size: 18,
-                      color: theme.colorScheme.onPrimary,
                     ),
-                    Container(
-                      margin: FxSpacing.left(4),
-                      child: FxText.bodyMedium("4.7",
-                          color: theme.colorScheme.onPrimary, fontWeight: 500),
-                    ),
-                    Container(
-                      margin: FxSpacing.left(16),
-                      child: Icon(
-                        MdiIcons.accountMultiple,
-                        size: 18,
-                        color: theme.colorScheme.onPrimary,
-                      ),
-                    ),
-                    Container(
-                      margin: FxSpacing.left(4),
-                      child: FxText.bodyMedium("7k",
-                          color: theme.colorScheme.onPrimary, fontWeight: 500),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                margin: FxSpacing.top(40),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: <Widget>[
-                    FxText.headlineSmall("\$50",
-                        color: theme.colorScheme.onPrimary,
-                        fontWeight: 600,
-                        letterSpacing: 0.5,
-                        height: 0),
-                    Container(
-                      margin: FxSpacing.left(8),
-                      child: FxText.bodyMedium("\$70",
-                          color: theme.colorScheme.onPrimary,
-                          fontWeight: 500,
-                          height: 0,
-                          muted: true,
-                          decoration: TextDecoration.lineThrough),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
-        Expanded(
-          child: ListView(
-              physics: ClampingScrollPhysics(),
-              shrinkWrap: true,
-              padding: FxSpacing.zero,
-              children: <Widget>[
-                Container(
-                  padding: FxSpacing.fromLTRB(36, 24, 36, 0),
-                  child: FxText.titleMedium("Description",
-                      color: theme.colorScheme.onBackground, fontWeight: 600),
-                ),
-                Container(
-                  padding: FxSpacing.fromLTRB(36, 0, 36, 0),
-                  margin: FxSpacing.top(16),
-                  child: FxText.bodyMedium(_descText,
-                      color: theme.colorScheme.onBackground,
-                      fontWeight: 500,
-                      letterSpacing: 0.3,
-                      height: 1.4),
-                ),
-                Container(
-                  padding: FxSpacing.fromLTRB(36, 24, 36, 0),
-                  child: FxText.titleMedium("Content",
-                      color: theme.colorScheme.onBackground, fontWeight: 600),
-                ),
-                Container(
-                  margin: FxSpacing.fromLTRB(36, 16, 36, 0),
-                  child: Column(
-                    children: <Widget>[
-                      singleContent(
-                          title: "Welcome to the Course",
-                          time: "4:15 mins",
-                          index: "01"),
-                      singleContent(
-                          title: "Piano - Intro",
-                          time: "8:30 mins",
-                          index: "02"),
-                      singleContent(
-                          title: "Piano - Process",
-                          time: "14:15 mins",
-                          enabled: false,
-                          index: "03"),
-                      singleContent(
-                          title: "Piano - Finishing",
-                          time: "2:45 mins",
-                          enabled: false,
-                          index: "04"),
-                      singleContent(
-                          title: "Exam",
-                          time: "30:00 mins",
-                          enabled: false,
-                          index: "05"),
-                    ],
                   ),
-                ),
-              ]),
+                ],
+              );
+            }
+          },
         ),
-        Container(
-          decoration: BoxDecoration(
-              color: customTheme.card,
-              border: Border.all(color: customTheme.border),
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(12), topRight: Radius.circular(12))),
-          padding: FxSpacing.fromLTRB(36, 16, 36, 16),
-          child: Row(
-            children: <Widget>[
-              Expanded(
-                child: FxButton(
-                  onPressed: () {},
-                  borderRadiusAll: 4,
-                  elevation: 0,
-                  child: FxText.bodyMedium("Buy Now",
-                      fontWeight: 600, color: theme.colorScheme.onPrimary),
-                ),
-              ),
-              Container(
-                margin: FxSpacing.left(16),
-                padding: FxSpacing.fromLTRB(16, 8, 16, 8),
-                decoration: BoxDecoration(
-                    color: theme.colorScheme.primary.withAlpha(40),
-                    borderRadius: BorderRadius.all(Radius.circular(4))),
-                child: Icon(
-                  MdiIcons.shoppingOutline,
-                  size: 24,
-                  color: theme.colorScheme.primary,
-                ),
-              )
-            ],
-          ),
-        )
       ],
-    ));
+    )));
   }
 
   Widget singleContent(

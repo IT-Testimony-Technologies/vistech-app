@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1096902431580-4p01t5c44rmaftceiakbu11tfl8qq0b6.apps.googleusercontent.com</string>
+	<string>655617181482-c10chobs52jrnouq2ittaigjeba5niov.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1096902431580-4p01t5c44rmaftceiakbu11tfl8qq0b6</string>
+	<string>com.googleusercontent.apps.655617181482-c10chobs52jrnouq2ittaigjeba5niov</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCTWER40ec4uoqwh41z2CQ1eHWSlAH0wu4</string>
+	<string>AIzaSyBo4_LeM3fIusLaYhBypmwvBGhYM9FbVks</string>
 	<key>GCM_SENDER_ID</key>
-	<string>1096902431580</string>
+	<string>655617181482</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.vistech.wimbo</string>
+	<string>com.ekaleerwe.forexsomo</string>
 	<key>PROJECT_ID</key>
-	<string>jfjewel-7cd8f</string>
+	<string>forexsomo</string>
 	<key>STORAGE_BUCKET</key>
-	<string>jfjewel-7cd8f.appspot.com</string>
+	<string>forexsomo.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1096902431580:ios:6c45b14a90feb37488a799</string>
+	<string>1:655617181482:ios:09427c1ccc3ac17a0b4053</string>
 </dict>
 </plist>

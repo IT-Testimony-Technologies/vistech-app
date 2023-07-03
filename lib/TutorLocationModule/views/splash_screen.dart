@@ -46,7 +46,8 @@ class _EstateSplashScreenState extends State<EstateSplashScreen> {
                   Image(
                     height: MediaQuery.of(context).size.height,
                     fit: BoxFit.cover,
-                    image: AssetImage("assets/images/apps/estate/estate16.jpg"),
+                    image:
+                        AssetImage("assets/images/apps/estate/OliviaBlack.gif"),
                   ),
                   /* Positioned(
                     top: 132,
@@ -59,12 +60,13 @@ class _EstateSplashScreenState extends State<EstateSplashScreen> {
                       letterSpacing: 0.4,
                     ),
                   ),*/
+                  Spacer(),
                   Positioned(
-                    top: 180,
+                    top: 350,
                     left: 0,
                     right: 0,
                     child: FxText.displaySmall(
-                      'Wimbo Music App',
+                      'FOREX SOMO',
                       color: customTheme.estateOnPrimary,
                       textAlign: TextAlign.center,
                       fontWeight: 800,

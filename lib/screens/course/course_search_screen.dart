@@ -207,8 +207,10 @@ class _CourseSearchScreenState extends State<CourseSearchScreen> {
       {required String title, required String image, int? price}) {
     return FxContainer.none(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => CourseDetailsScreen()));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => CourseDetailsScreen(topic_id: 1)));
       },
       borderRadiusAll: 4,
       child: Column(
@@ -253,8 +255,10 @@ class _CourseSearchScreenState extends State<CourseSearchScreen> {
       {required String image, required String title, int? courses}) {
     return InkWell(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => CourseDetailsScreen()));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => CourseDetailsScreen(topic_id: 1)));
       },
       child: FxContainer.bordered(
         paddingAll: 0,

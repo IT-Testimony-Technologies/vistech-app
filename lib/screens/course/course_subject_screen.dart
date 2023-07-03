@@ -150,7 +150,7 @@ class _CourseSubjectScreenState extends State<CourseSubjectScreen> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            CourseDetailsScreen()),
+                                            CourseDetailsScreen(topic_id: 1)),
                                   );
                                 },
                                 child: singleResource(

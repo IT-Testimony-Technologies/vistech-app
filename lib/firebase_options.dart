@@ -44,40 +44,40 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAAd2lc0kQpemWDk1VFQYeaH6xgpatgJh8',
-    appId: '1:1096902431580:web:ebf539da777f465588a799',
-    messagingSenderId: '1096902431580',
-    projectId: 'jfjewel-7cd8f',
-    authDomain: 'jfjewel-7cd8f.firebaseapp.com',
-    storageBucket: 'jfjewel-7cd8f.appspot.com',
-    measurementId: 'G-R4CCJ5GT58',
+    apiKey: 'AIzaSyC4oN1yOrXQlMiQMPo3tjRAxp4lkhJwCqI',
+    appId: '1:655617181482:web:105c104982879c9c0b4053',
+    messagingSenderId: '655617181482',
+    projectId: 'forexsomo',
+    authDomain: 'forexsomo.firebaseapp.com',
+    storageBucket: 'forexsomo.appspot.com',
+    measurementId: 'G-V3R272C05M',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCaw4VRNlwGwj2su-Zv9J-YSb0d9FIfZPU',
-    appId: '1:1096902431580:android:503c7938f24a31b988a799',
-    messagingSenderId: '1096902431580',
-    projectId: 'jfjewel-7cd8f',
-    storageBucket: 'jfjewel-7cd8f.appspot.com',
+    apiKey: 'AIzaSyASwUQBJ3WDa_jjmVAeChe6OlxetQI0cqk',
+    appId: '1:655617181482:android:14aff959f4daaef30b4053',
+    messagingSenderId: '655617181482',
+    projectId: 'forexsomo',
+    storageBucket: 'forexsomo.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCTWER40ec4uoqwh41z2CQ1eHWSlAH0wu4',
-    appId: '1:1096902431580:ios:6c45b14a90feb37488a799',
-    messagingSenderId: '1096902431580',
-    projectId: 'jfjewel-7cd8f',
-    storageBucket: 'jfjewel-7cd8f.appspot.com',
-    iosClientId: '1096902431580-4p01t5c44rmaftceiakbu11tfl8qq0b6.apps.googleusercontent.com',
-    iosBundleId: 'com.vistech.wimbo',
+    apiKey: 'AIzaSyBo4_LeM3fIusLaYhBypmwvBGhYM9FbVks',
+    appId: '1:655617181482:ios:09427c1ccc3ac17a0b4053',
+    messagingSenderId: '655617181482',
+    projectId: 'forexsomo',
+    storageBucket: 'forexsomo.appspot.com',
+    iosClientId: '655617181482-c10chobs52jrnouq2ittaigjeba5niov.apps.googleusercontent.com',
+    iosBundleId: 'com.ekaleerwe.forexsomo',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCTWER40ec4uoqwh41z2CQ1eHWSlAH0wu4',
-    appId: '1:1096902431580:ios:8c99c3660282f52588a799',
-    messagingSenderId: '1096902431580',
-    projectId: 'jfjewel-7cd8f',
-    storageBucket: 'jfjewel-7cd8f.appspot.com',
-    iosClientId: '1096902431580-7on1lhlq13c73r021mbjej4gv4ur2ua4.apps.googleusercontent.com',
+    apiKey: 'AIzaSyBo4_LeM3fIusLaYhBypmwvBGhYM9FbVks',
+    appId: '1:655617181482:ios:eb2d5785c3412f320b4053',
+    messagingSenderId: '655617181482',
+    projectId: 'forexsomo',
+    storageBucket: 'forexsomo.appspot.com',
+    iosClientId: '655617181482-j9249eevcdqsdgs276oqq5bi9lno2vfh.apps.googleusercontent.com',
     iosBundleId: 'com.example.vistech',
   );
 }

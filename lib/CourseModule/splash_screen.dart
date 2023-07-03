@@ -1,12 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:vistech/TutorLocationModule/views/full_app_screen.dart';
+import 'package:vistech/TutorLocationModule/views/login_screen.dart';
 import 'package:vistech/theme/app_notifier.dart';
 import 'package:vistech/theme/app_theme.dart';
-
-import 'login_screen.dart';
-import 'register_screen.dart';
 
 class CookifySplashScreen extends StatefulWidget {
   @override
@@ -16,6 +16,7 @@ class CookifySplashScreen extends StatefulWidget {
 class _CookifySplashScreenState extends State<CookifySplashScreen> {
   late CustomTheme customTheme;
   late ThemeData theme;
+  FirebaseAuth auth = FirebaseAuth.instance;
 
   @override
   void initState() {
@@ -53,21 +54,27 @@ class _CookifySplashScreenState extends State<CookifySplashScreen> {
             child: Column(
               children: [
                 FxText.displaySmall(
-                  "Welcome to Cookify",
-                  color: customTheme.cookifyPrimary,
+                  "WELCOME TO FOREX SOMO",
+                  fontWeight: 800,
+                  fontSize: 20,
+                  style: TextStyle(
+                      fontFamily: 'Arial',
+                      color: Colors.deepPurpleAccent,
+                      fontSize: 20),
+                  color: Colors.deepPurpleAccent,
                 ),
                 Expanded(
                   child: Center(
                     child: Image(
                       image: AssetImage(
-                          './assets/images/apps/cookify/splash-1.png'),
+                          './assets/images/apps/estate/Analytics_animation.gif'),
                       width: 320,
                     ),
                   ),
                 ),
                 Row(
                   children: [
-                    Expanded(
+                    /** Expanded(
                         child: FxButton.text(
                       splashColor: customTheme.cookifyPrimary.withAlpha(40),
                       padding: FxSpacing.y(12),
@@ -82,24 +89,34 @@ class _CookifySplashScreenState extends State<CookifySplashScreen> {
                         color: customTheme.cookifyPrimary,
                         letterSpacing: 0.5,
                       ),
-                    )),
+                    )),**/
                     Expanded(
                         child: FxButton(
                       elevation: 0,
                       padding: FxSpacing.y(12),
                       borderRadiusAll: 4,
                       onPressed: () {
-                        Navigator.of(context, rootNavigator: true).push(
-                          MaterialPageRoute(
-                              builder: (context) => CookifyLoginScreen()),
-                        );
+                        // if user already logged in, advance to HomeScreen,but if not advance to LoginScreen
+                        auth.authStateChanges().listen((User? user) {
+                          if (user == null) {
+                            Navigator.of(context, rootNavigator: true).push(
+                              MaterialPageRoute(
+                                  builder: (context) => EstateLoginScreen()),
+                            );
+                          } else {
+                            Navigator.of(context, rootNavigator: true).push(
+                              MaterialPageRoute(
+                                  builder: (context) => EstateFullAppScreen()),
+                            );
+                          }
+                        });
                       },
                       child: FxText.labelLarge(
-                        "LOG IN",
+                        "CONTINUE",
                         color: customTheme.cookifyOnPrimary,
                         letterSpacing: 0.5,
                       ),
-                      backgroundColor: customTheme.cookifyPrimary,
+                      backgroundColor: Colors.deepPurpleAccent,
                     )),
                   ],
                 )

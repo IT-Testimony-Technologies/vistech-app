@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutx/themes/app_theme_notifier.dart';
 import 'package:provider/provider.dart';
-import 'package:vistech/TutorLocationModule/views/splash_screen.dart';
+import 'package:vistech/CourseModule/splash_screen.dart';
 import 'package:vistech/localizations/app_localization_delegate.dart';
 import 'package:vistech/localizations/language.dart';
 import 'package:vistech/theme/app_notifier.dart';
@@ -28,7 +28,7 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         builder: (BuildContext context, AppNotifier value, Widget? child) {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Vistech',
+        title: 'Forex Somo',
         theme: AppTheme.theme,
         builder: (context, child) {
           return Directionality(
@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: Language.getLocales(),
-        home: EstateSplashScreen(),
+        home: CookifySplashScreen(),
       );
     });
   }
